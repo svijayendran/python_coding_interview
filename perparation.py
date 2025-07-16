@@ -59,3 +59,14 @@ txt1 = """Hello my Number is 123456789 and
             my friend's number is 987654321 our us number is (123)-456-7890"""
 # using_re(txt1)
 
+
+# secound largest number 
+var = [21,23,1,43,42]
+fir = sec = float("-inf")
+for i in var:
+    if i > fir:
+        sec = fir
+        sec = i
+    elif fir > i > sec:
+        sec = i
+print(sec)
