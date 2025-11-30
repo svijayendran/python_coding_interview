@@ -212,4 +212,5 @@ def outter(func):
 def main(aurg):
     raise "aurg error"
 
-main("Hello")
+# main("Hello")
+
