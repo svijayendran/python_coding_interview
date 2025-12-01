@@ -413,5 +413,40 @@ def common_value():
 
 # common_value()
 
+"""
+# Input : # n = 2, 
+# # List_1 = [1, 2, 3, 4, 5, 6] 
+# # Output : List_1 = [5, 6, 1, 2, 3, 4]
+"""
 
+def rotate_list(lst, n):
+    n = n % len(lst)
+    return lst[-n:] + lst[:-n]
+
+# Example
+n = 10
+List_1 = [1, 2, 3, 4, 5, 6]
+
+# List_1 = rotate_list(List_1, n)
+# print(List_1)
+
+
+"""
+# Write a python program to find the number of notes of different denominations that sum up to the given amount 
+# # Starting from the highest denomination note, try to accommodate as many notes as possible for a given amount. 
+# # We may assume that we have infinite supply of notes of values {2000, 500, 200, 100, 50, 20, 10, 5, 1} 
+# # Input : 2456 # Output : Currency Count # 2000 : 1 # 200 : 2 # 50 : 1 # 5 : 1 # 1 : 1
+"""
+def RupeeNote(amt):
+    
+    curn = [2000, 500, 100, 50, 10, 5, 2, 1]
+    out ={}
+    for i in curn:
+        count = amt // i
+        out.update({i : count})
+        amt = amt % i
+    return out
+
+# amt = 2546
+# print(RupeeNote(amt))
 
