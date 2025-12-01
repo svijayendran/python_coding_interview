@@ -214,3 +214,204 @@ def main(aurg):
 
 # main("Hello")
 
+
+"""
+Write a function to find the longest common prefix string amongst an array of strings 
+If there is no common prefix, return an empty string "". 
+Example 1: Input: strs = ["flower","flow","flight"], Output: "fl" 
+Example 2: Input: strs = ["dog","racecar","car"], Output: "" 
+Explanation: There is no common prefix among the input strings.
+"""
+
+def longestCommonPrefix(strs):
+    
+    prefix = strs[0]
+
+    for s in strs[1:]:
+        
+        while not s.startswith(prefix):
+            prefix = prefix[:-1]
+            if prefix == "":
+                return ""
+    return prefix
+
+# var = ["flower","flow","flowerlight"]
+# print(longestCommonPrefix(var))
+
+def longest(prif):
+    prifix = prif[0]
+    for i in prif[1:]:
+        while not i.startswith(prifix):
+            prifix = prifix[:-1]
+            if prifix == "":
+                return ""
+    return prifix          
+    
+# var = ["flower","flow","flowerlight"]
+# print(longest(var))
+
+
+"""
+Generate this list up to 5 elements and in the same pattern. 
+['12','23','34','45','56'] 
+• Now build a dictionary from this. 
+• Now change the value of n to 6 or 7. 
+• Define a simple list and another list, 
+• Take random names, can be any 3 names and capitalize first and last character of each word 
+• Take random four numbers and write a code to sum up all the numbers 
+• Implement the same program in recursion. 
+"""
+
+"""
+1)  Generate this list up to 5 elements and in the same pattern. 
+['12','23','34','45','56'] 
+"""
+
+generate_pattern_list = lambda x : [str(i) + str(i+1) for i in range(1, x)]
+# print(var(5))  # ['01', '12', '23', '34', '45']
+
+"""
+2) Now build a dictionary from this. 
+"""
+dictform = {idx + 1 : i for idx , i in enumerate(generate_pattern_list(5))}
+# print(dictform)
+
+
+# 3. Change n
+# print("Pattern with n=7:", generate_pattern_list(7))
+
+# 4. Names Capitalized
+names = ["john", "alice", "michael"]
+
+def capitalize_first_last(name):
+    if len(name) <= 1:
+        return name.upper()
+    return name[0].upper() + name[1:-1] + name[-1].upper()
+
+# capitalized = [capitalize_first_last(n) for n in names]
+# print("Capitalized Names:", capitalized)
+
+# 5. Sum of numbers
+nums = [5, 12, 7, 20]
+# print("Sum:", sum(nums))
+
+# 6. Recursive Sum
+def recursive_sum(lst):
+    if not lst:
+        return 0
+    return lst[0] + recursive_sum(lst[1:])
+
+# print("Recursive Sum:", recursive_sum(nums))
+
+
+
+"""
+Write a python program to find all valid words of the dictionary provided that are possible using 
+characters from the given character array 
+Input: dict - ['go', 'bat', 'me', 'eat', 'goal', boy', 'run']  
+arr[] = ['e', 'o', 'b', 'a', 'm', 'g', 'l'] 
+Output: 'go', 'me', 'goal' 
+"""
+
+
+def validwords(dic_word, arr):
+    arr = set(arr)
+    outp = []
+    for word in dic_word:
+        if set(word).issubset(arr):
+            outp.append(word)
+    
+    return outp
+    
+dict_words = ['go', 'bat', 'me', 'eat', 'goal', 'boy', 'run']
+arr = ['e', 'o', 'b', 'a', 'm', 'g', 'l']
+# print(validwords(dict_words, arr))
+
+
+
+"""
+Sort the dictionary based on values, assume values are greater than 0 
+dict = {"test": 3, "test2": 2} 
+"""
+
+d = {"test": 3, "test2": 2}
+
+sorted_dict = dict(sorted(d.items(), key=lambda x: x[1]))
+
+# print(sorted_dict)
+
+
+"""
+Given a list of tuples where each tuple contains two elements (key, value) create a dictionary that 
+accumulates values for the same key. 
+Duplicates will not be taken for accumulations 
+Input: [(a, 1), (b, 2), (c, 4), (a, 3), (a, 1), (c, 3)] 
+Output: {a: 4, b:2, c:7}
+
+"""
+def addbothvalue():
+    data = [('a', 1), ('b', 2), ('c', 4), ('a', 3), ('a', 1), ('c', 3)]
+
+    result = {}
+    seen_pairs = set()
+
+    for key, value in data:
+        if (key, value) not in seen_pairs: 
+            seen_pairs.add((key, value))
+            
+            if key in result:
+                result[key] += value
+            else:
+                result[key] = value
+                
+    # print(result)
+
+
+"""
+13. I have a list = [1, 2, 3, 4,5, 6,7, 8,9, 10]. I want to batch process the list with the given size N. 
+Input N = 2 
+output: [1,2] 
+[3,4] 
+[5,6] 
+[7, 8] 
+[9,10]   
+Input N = 3 
+output: [1, 2, 3]  
+[4, 5, 6]  
+[7, 8, 9]  
+[10] 
+"""
+def batchProcess(n):
+    output = []
+    list = [1, 2, 3, 4,5, 6,7, 8,9, 10]
+    for i in range(0, len(list), n):
+        output.append(list[i:i+n])
+    return output
+
+# print(batchProcess(2))
+
+
+"""
+Determine common values in a dict and return its key and value 
+Input: d1 = {"name": "xxx", "age": 20, "degree": "BSC"} 
+d2 = {"name": "yyy", "age": 22, "edu": "BSC"} 
+Output {"BSC": ["degree", "edu"]}
+"""
+def common_value():
+
+    d1 = {"name": "xxx", "age": 20, "degree": "BSC"}
+    d2 = {"name": "yyy", "age": 22, "edu": "BSC"}
+
+    result = {}
+
+    for k1, v1 in d1.items():
+        for k2, v2 in d2.items():
+            if v1 == v2: 
+                result[v1] = [k1, k2]
+
+    print(result)
+
+# common_value()
+
+
+
