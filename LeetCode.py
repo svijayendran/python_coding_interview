@@ -71,3 +71,74 @@ def lengthOfLongestSubstring(s):
 # sst = "abcabcbb"
 # print(lengthOfLongestSubstring(sst))
 
+"""
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n)).
+
+ 
+
+Example 1:
+
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+Example 2:
+
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+"""
+def sorrrter(nums1, nums2):
+    new = nums1 + nums2
+    new.sort()
+    if len(new) % 2 == 0 :
+        idx = len(new) // 2
+        return (new[idx-1] + new[idx]) / 2
+    elif len(new) % 2 == 1 :
+        idx = (len(new) + 1)// 2
+        return new[idx-1]
+    
+    
+nums1 = [1,2,3,4,5]
+nums2 = [6,7,8,9,10,11,12,13,14,15]
+# print(sorrrter(nums1, nums2))
+
+
+"""
+Longest Palindromic Substring
+Attempted
+Medium
+Topics
+premium lock icon
+Companies
+Hint
+Given a string s, return the longest palindromic substring in s.
+
+Example 1:
+
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+Example 2:
+
+Input: s = "cbbd"
+Output: "bb"
+"""
+
+
+def palindorm(lsst):
+    var = {}
+    for i in range(0, len(lsst)):
+        for j in range(0, len(lsst)+1):
+            print(lsst[i:j])
+            if lsst[i:j] == lsst[i:j][::-1] and len(lsst[i:j]) > 1 :
+                var.update({len(lsst[i:j]) : lsst[i:j]})
+
+    pp = { i for i, val in var.items()}
+
+    return var.get(max(pp)) if pp else lsst[0]
+
+# ll = "ac"
+# print(palindorm(ll))
+
