@@ -145,7 +145,7 @@ def max_three(a, b, c):
 # Example: [1,2,3] → 6.
 """
 # from functools import reduce
-# val =[1,2,3]
+# val =[1,2,3]cx
 # var = reduce(lambda x, y : x + y, val)
 
 def countss(val):
@@ -451,3 +451,47 @@ def RupeeNote(amt):
 # amt = 2546
 # print(RupeeNote(amt))
 
+"""
+staticmethod
+==> A static method does not take self or cls.
+==> It behaves like a normal function placed inside a class.
+==> It does not depend on the class or object state.
+==> You can call it directly using the class, no need to create an object.
+"""
+class A:
+    @staticmethod
+    def add(a, b):
+        return a*b
+
+
+# print(A.add(2, 3))
+
+"""
+classmethod
+==> A class method takes cls as the first argument.
+==> cls refers to the class itself, not an object.
+==> It is used when you want to work with class-level data, not instance data.
+==> You can call it using the class name or an object.
+"""
+
+class B:
+    popu = 0
+    def __init__(self, Name):
+        self.Name = Name
+        B.popu += 1
+    
+    @classmethod
+    def addSomValue(cls, Fname, Lname):
+        return cls(f"{Fname} {Lname}")
+
+
+# obj = B.addSomValue("ajai", "Kumar")
+# B.addSomValue("sunil", "Kumar")
+# B.addSomValue("Rajesh", "Kumar")
+# print(obj.Name)
+# print(obj.popu)
+
+
+"""
+
+"""
