@@ -122,7 +122,7 @@ EvenOdd = lambda num : f"{num} is even number " if num % 2 == 0 else f"{num} is 
 
 
 """
-Max of Three: Write max_of_three(a, b, c) returning the largest value. Example: max_of_three(1, 2, 3) → 3.​
+Max of Three: Write max_of_three(a, b, c) returning the largest value. Example: max_of_three(1, 2, 3) → 3.
 """
 max_thre = lambda maxx : max(maxx)
 # num_var23 = [1,3,4,8,9]
@@ -491,7 +491,117 @@ class B:
 # print(obj.Name)
 # print(obj.popu)
 
+#oops in  RBO
 
 """
+ Recursive Method (Simple but Slow for Large Numbers)
+"""
+def fibonacci_series(n):
+    a, b = 0, 1
+    series = []
+    for _ in range(n):
+        series.append(a)
+        a, b = b, a + b
+    return series
+
+# n = 8
+# series = fibonacci_series(n)
+
+
+def fibonaccii():
+    a, b, = 0, 1
+    while True:
+        yield a
+        a, b = b, a+b
+
+# fib = fibonaccii()
+# out = [next(fib) for _ in range(7)]
+# print(out)
+"""
+input = [1,2,3[4,5,6[7,8,9],10]]
+output = [1, 2, 3, 4, 5, 6, 7, 8, 10]
+"""
+def list_merge(inp_list):
+    out = []
+    for i in inp_list:
+        if type(i) is list:
+            out.extend(list_merge(i))
+        else:
+            out.append(i)
+    return out
+
+# inputs = [1,2,3,[4,5,6,[7,8,9], 10]]
+# print(list_merge(inputs))
+"""
+Given a list of strings where each string contains a name followed by a number, sort the list based on the numeric value.
+# output : ['arun23', 'amul25', 'kala26', 'sam45']  
 
 """
+def spliting(inp):
+    get_num = {}
+    for i in inp: 
+        for j in range(0, len(i) -1):
+            k =""
+            if i[j:].isdigit():
+                k="".join(i[j:])
+                idx = inp.index(i)
+                
+        get_num.update({idx : int(k)})
+    outpit =[]
+    out = dict(sorted(get_num.items(), key = lambda X : X[1]))
+    outpit= [inp[ke] for ke, val in out.items()]
+    return outpit
+
+inp = ["arun23", "sam45", "kala26", "amul25"]   
+# spliting(inp)
+
+def another_spliting(inp):
+    return sorted(inp,key = lambda x : int("".join(filter(str.isdigit , x))))
+
+# another_spliting(inp)
+
+def annagram():
+    sttr = ["can", "bat" , "tab", "atb", "cat"]
+    out = []
+    for i in range(0, len(sttr) -1):
+        if sorted(sttr[i]) == sorted(sttr[i+1]):
+
+            out.append(sttr[i])
+    return out
+
+# print(annagram())
+
+
+"""
+find the missing number
+"""
+
+def find_missing(arr):
+    for i in range(len(arr) -1):
+        if arr[i+1] - arr[i] != 1:
+            return arr[i] +1
+
+
+# arr = [30,31,32, 33,34, 36]
+# print(find_missing(arr))
+
+
+
+
+
+# Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+def funcctions(numsu):
+    var = []
+    duplicate = []
+    for i in numsu:
+        if i not in var :
+            var.append(i)
+        else:
+            duplicate.append("_")
+    print(var )
+    return var
+    
+
+
+# numsu =[1,1,2]
+# print(funcctions(numsu))

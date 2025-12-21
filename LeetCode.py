@@ -425,7 +425,7 @@ def romenss(num):
 
     return out
 
-# print(romenss(3749))
+#print(romenss(3749))  #MMMDCCXLIX
 
 """
 For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
@@ -483,4 +483,41 @@ def longestpri():
                 return ""
     return prefix
 
-longestpri()
+# longestpri()
+
+"""
+
+"""
+
+   
+
+def three_sum(nums):
+    nums.sort()
+    res = []
+
+    for i in range(len(nums)):
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue  # skip duplicates for i
+
+        left, right = i + 1, len(nums) - 1
+
+        while left < right:
+            s = nums[i] + nums[left] + nums[right]
+
+            if s == 0:
+                res.append([nums[i], nums[left], nums[right]])
+
+                # skip duplicates drastical changes
+                left += 1
+                while left < right and nums[left] == nums[left - 1]:
+                    left += 1
+
+            elif s < 0:
+                left += 1
+            else:
+                right -= 1
+
+    return res
+
+arr = [-1,0,1,2,-1,-4]
+three_sum(arr)
